@@ -1,0 +1,13 @@
+WHILE user chooses continue
+    DISPLAY options
+    GENERATE computer choice randomly
+    WHILE user choice invalid
+        GET user choice
+        CHECK user choice and determine if valid
+    ENDWHILE
+    COMPARE user and computer choice
+    DETERMINE winner 
+    UPDATE score 
+    DISLAY results 
+    CHECK if user wants to continue
+ENDWHILE
