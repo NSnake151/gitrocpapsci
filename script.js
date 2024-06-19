@@ -5,9 +5,42 @@ function displayRPKOptions(){
     alert("Lets play RPK. Type in 'rock' 'paper' or 'scizzors'.");
 }
 
-function determineRPKWinner(userChoice, computerChoice){
+//returns the name of the player who won, or "draw" if a draw.
+function determineRPKWinner(playerAName, playerAChoice, playerBName, playerBChoice){
 
+   let rpkwinner;
+
+   rpkwinner = determineRPKResult(playerAChoice, playerBChoice);
+
+   switch(rpkwinner){
+
+    case null:
+        return "draw";
+    case 0:
+        return playerBName;
+    case 1:
+        return playerAName;
+   }
    
+   
+
+
+}
+
+//returns null for a draw, 1 if playerAChoice wins, 0 if playerBChoice wins
+function determineRPKResult(playerAChoice, playerBChoice)
+{
+
+    if(playerAChoice == playerBChoice){return null}
+    if(playerAChoice == "rock" && playerBChoice == "scizzors"){return 1}
+    if(playerAChoice == "paper" && playerBChoice == "rock"){return 1}
+    if(playerAChoice == "scizzors" && playerBChoice == "paper"){return 1}
+    else{
+        return 0;
+    }
+    
+    
+
 }
 
 
@@ -60,17 +93,24 @@ function getUserRPKChoice(){
 function playRound(){
 
     displayRPKOptions();
-    computerChoice = getComputerRPKChoice();
+    //computerChoice = getComputerRPKChoice();
+    computerChoice = "paper";
     userChoice = getUserRPKChoice();
-    winner = determineRPKWinner(userChoice, computerChoice);
+    winner = determineRPKWinner("user", userChoice, "computer", computerChoice);
 
-    if(winner == "user")
+    if(winner === "user")
     {
         userScore = updateScore(userScore);
     }
-    else{
+    else if(winner === "computer"){
+
         computerScore = updateScore(computerScore);
     }
+    else{
+
+        alert("That round was a draw, the score has not changed.");
+    }
+    
     
     displayResults(userScore, computerScore);
 }
