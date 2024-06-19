@@ -93,8 +93,8 @@ function getUserRPKChoice(){
 function playRound(){
 
     displayRPKOptions();
-    //computerChoice = getComputerRPKChoice();
-    computerChoice = "paper";
+    computerChoice = getComputerRPKChoice();
+    
     userChoice = getUserRPKChoice();
     winner = determineRPKWinner("user", userChoice, "computer", computerChoice);
 
